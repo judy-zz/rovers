@@ -1,4 +1,8 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in rovers.gemspec
 gemspec
+
+# Development dependencies.
+gem "guard"
+gem "guard-rspec"
+gem "rspec"
