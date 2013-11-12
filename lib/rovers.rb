@@ -1,5 +1,6 @@
 require "rovers/version"
+require "rovers/rover"
 
 module Rovers
-  # Your code goes here...
+
 end
