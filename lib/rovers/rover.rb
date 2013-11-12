@@ -1,5 +1,6 @@
 class Rover
   @@all = []
+  @@directions = [:n, :e, :s, :w]
   class << self
     def all
       @@all
@@ -22,7 +23,7 @@ class Rover
 
   def set_direction(original_direction)
     direction = original_direction.downcase.to_sym
-    if [:n, :e, :s, :w].include?(direction)
+    if @@directions.include?(direction)
       @direction = direction
     else
       raise "Unknown direction #{original_direction}."
@@ -31,6 +32,19 @@ class Rover
 
   def to_s
     "Rover(#{x},#{y})"
+  end
+
+  def rotate(original_face)
+    face = original_face.downcase.to_sym
+    case face
+    when :l
+      @direction = @@directions[(@@directions.index(@direction) - 1) % @@directions.length]
+    when :r
+      @direction = @@directions[(@@directions.index(@direction) + 1) % @@directions.length]
+    else
+      raise "Cannot turn #{original_face}. Try L or R."
+    end
+    return self
   end
 
 end
