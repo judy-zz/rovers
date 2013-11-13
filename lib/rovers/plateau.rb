@@ -22,6 +22,15 @@ class Plateau
     "#{depth}x#{width} plateau with: #{rovers.collect(&:to_s).join(',')}"
   end
 
+  def to_structured_output
+    String.new.tap do |s|
+      Array(@rovers).each do |rover|
+        s << [rover.x, rover.y, rover.direction.to_s.upcase].join(" ")
+        s << "\n"
+      end
+    end
+  end
+
 private
 
   def rover_already_exists?(x, y)

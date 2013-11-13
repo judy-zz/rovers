@@ -27,4 +27,15 @@ describe Plateau do
       expect { plateau.add_rover Rover.new(0,  6, :n) }.to raise_error "Out of bounds."
     end
   end
+
+  describe "#to_structured_output" do
+    it "should return structured output" do
+      plateau.add_rover(Rover.new(2, 3, :n))
+      plateau.add_rover(Rover.new(4, 5, :w))
+      plateau.to_structured_output.should == <<-eos
+2 3 N
+4 5 W
+      eos
+    end
+  end
 end
