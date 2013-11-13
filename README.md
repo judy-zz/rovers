@@ -1,29 +1,45 @@
 # Rovers
 
-TODO: Write a gem description
+This is a gem to run a simulation of rovers on a plateau on Mars' surface.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Since this isn't a proper gem, you can just run it locally. Clone the repository:
 
-    gem 'rovers'
+    $ git clone http://github.com/judy/rovers.git
 
-And then execute:
+Then add this line to your application's Gemfile, modifying the location:
+
+    gem 'rovers', path: "location/to/the/rovers/directory"
+
+## Specs
+
+Clone the git repository to your local development machine. Then install the gems:
 
     $ bundle
 
-Or install it yourself as:
+And run the specs:
 
-    $ gem install rovers
+    $ rspec spec/
+
+Guard is also used for live reloading of specs. You can just run guard:
+
+    $ guard
 
 ## Usage
 
-TODO: Write usage instructions here
+Require the main "rovers" library. Then pass a string into the InputProcessor.process method. Use the following format:
 
-## Contributing
+### Input
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+    5 5
+    1 2 N
+    LMLMLMLMM
+    3 3 E
+    MMRMMRMRRM
+
+### Output
+
+    1 3 N
+    5 1 E
+
