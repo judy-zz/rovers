@@ -1,7 +1,8 @@
 class Rover
   DIRECTIONS = [:n, :e, :s, :w]
 
-  attr_accessor :x, :y, :direction
+  attr_reader :x, :y, :direction
+  attr_accessor :plateau
 
   def initialize(x, y, direction)
     @x = x.to_i
@@ -29,6 +30,22 @@ class Rover
       raise "Cannot turn #{original_face}. Try L or R."
     end
     return self
+  end
+
+  def move
+    case @direction
+    when :n
+      y = @y + 1
+    when :s
+      y = @y - 1
+    when :e
+      x = @x + 1
+    when :w
+      x = @x - 1
+    end
+    @plateau.check_for_empty_space(x || @x, y || @y)
+    @x = x || @x
+    @y = y || @y
   end
 
   def to_s
