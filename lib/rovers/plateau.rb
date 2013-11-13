@@ -4,6 +4,7 @@ class Plateau
   def initialize(depth, width)
     @depth = depth.to_i
     @width = width.to_i
+    @rovers = []
   end
 
   def add_rover(rover)
@@ -24,7 +25,7 @@ class Plateau
 private
 
   def rover_already_exists?(x, y)
-    @rovers.any? {|r| r.x == x && r.y == y}
+    Array(@rovers).any? {|r| r.x == x && r.y == y}
   end
 
   def out_of_bounds?(x, y)
